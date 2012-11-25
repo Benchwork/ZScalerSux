@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Welcome To Zscaler Bypass Extension Options</title>
+    <script type="text/javascript">
+      function saveOptions() {
+        var request = {
+          type: "save",
+          acc: document.getElementById('account').value,
+          pass: document.getElementById('password').value
+        };
+        chrome.extension.sendRequest(request, function(response) {
+          alert('Changes successfully saved.');
+        });
+      }
+      function loadOptions() {
+        chrome.extension.sendRequest({type: "load"}, function(response) {
+          document.getElementById('account').value = response.acc;
+          document.getElementById('password').value = response.pass;
+        });
+      }
+    </script>
+  </head>
+  <body style="margin-top: 50px;" onload="loadOptions()">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="50%">
+    <tr>
+    <td class="login_border">
+    <div class="boxhead">Set your username and password</div>
+      <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td class="login_txtbox" width="60%">Login</td>
+        </tr>
+        <tr>
+          <td align="center">
+            <input id="account" size="256" style="width: 256px;">
+          </td>
+        </tr>
+        <tr>
+          <td class="login_txtbox" width="60%">Password</td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+          <td align="center">
+            <input id="password" size="256" style="width: 256px;" type="password">
+          </td>
+        </tr>
+        <tr height="2"><td/></tr>
+        <tr>
+          <td align="center">
+            <input name="bsubmit" class="bsubmit" value="Save" type="button" onclick="saveOptions()">
+          </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+          <td colspan="3" height="15" valign="top"></td>
+        </tr>
+        <tr>
+          <td colspan="3" class="login_footer" valign="top">ZScaler Bypass Extension; Copyright &copy; Goodwine</td>
+        </tr>
+      </table>
+    </td>
+    </table>
+  </body>
+</html>
