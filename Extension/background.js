@@ -1,8 +1,3 @@
-<html>
-<head>
-</head>
-<body>
-<script type="text/javascript">
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if (request.type == "save") {
@@ -19,5 +14,3 @@ chrome.extension.onRequest.addListener(
     }
   }
 );
-</script>
-</body>

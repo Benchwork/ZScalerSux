@@ -1,8 +1,7 @@
 {
    "manifest_version": 2,
    "background": {
-      "page": "background.html",
-      "persistent": false
+      "scripts": ["background.js"]
    },
    "content_scripts": [ {
       "js": [ "bypass.js" ],
