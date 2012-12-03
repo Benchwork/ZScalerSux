@@ -1,6 +1,8 @@
 // ==UserScript==
 // @name           Bypass ZScaler
 // @description    Bypass ZScaler by automatically sending the information needed.
+// @grant GM_setValue
+// @grant GM_getValue
 // @include        https://*.zscaler.net/*
 // @include        http://*.zscaler.net/*
 // ==/UserScript==
@@ -28,8 +30,10 @@ passSaveInp.name = "passSaveInp";
 passSaveInp.type = "password";
 button.type = "button";
 
-accSaveInp.onchange = function () {account = this.value;};
-passSaveInp.onchange = function () {password = this.value;};
+function accChange(value) {account = value;};
+function passChange(value) {password = value;};
+accSaveInp.addEventListener("change", function(e) {accChange(this.value)}, true);
+passSaveInp.addEventListener("change", function(e) {passChange(this.value)}, true);
 
 accLabel.htmlFor = "accSaveInp";
 passLabel.htmlFor = "passSaveInp";
@@ -69,7 +73,8 @@ accSaveInp.style.float = "right";
 passSaveInp.style.float = "right";
 button.style.float = "right";
 button.style.clear = "both";
-button.onclick = function () {
+
+function buttonClick() {
   link.style.display = "";
   accLabel.style.display = "none";
   accSaveInp.style.display = "none";
@@ -80,15 +85,18 @@ button.onclick = function () {
   GM_setValue("acc", account);
   GM_setValue("pass", password);
   lazyLogIn();
-};
-link.onclick = function () {
+}
+button.addEventListener("click", function (e){buttonClick()}, true);
+
+function linkClick() {
   link.style.display = "none";
   accLabel.style.display = "";
   accSaveInp.style.display = "";
   passLabel.style.display = "";
   passSaveInp.style.display = "";
   button.style.display = "";
-};
+}
+link.addEventListener("click", function (e){linkClick()}, true);
 
 document.getElementsByTagName('body')[0].appendChild(container);
 
