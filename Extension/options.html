@@ -3,26 +3,8 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <title>Welcome To Zscaler Bypass Extension Options</title>
-    <script type="text/javascript">
-      function saveOptions() {
-        var request = {
-          type: "save",
-          acc: document.getElementById('account').value,
-          pass: document.getElementById('password').value
-        };
-        chrome.extension.sendRequest(request, function(response) {
-          alert('Changes successfully saved.');
-        });
-      }
-      function loadOptions() {
-        chrome.extension.sendRequest({type: "load"}, function(response) {
-          document.getElementById('account').value = response.acc;
-          document.getElementById('password').value = response.pass;
-        });
-      }
-    </script>
   </head>
-  <body style="margin-top: 50px;" onload="loadOptions()">
+  <body style="margin-top: 50px;">
     <table align="center" border="0" cellpadding="0" cellspacing="0" width="50%">
     <tr>
     <td class="login_border">
@@ -48,7 +30,7 @@
         <tr height="2"><td/></tr>
         <tr>
           <td align="center">
-            <input name="bsubmit" class="bsubmit" value="Save" type="button" onclick="saveOptions()">
+            <input name="bsubmit" class="bsubmit" value="Save" type="button">
           </td>
         </tr>
         <tr><td></td></tr>
@@ -62,4 +44,5 @@
     </td>
     </table>
   </body>
+  <script src="options.js"></script>
 </html>
