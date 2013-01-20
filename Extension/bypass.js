@@ -2,6 +2,7 @@ var accInput = document.getElementsByName('lognsfc')[0];
 var accButton = document.getElementsByName('lsubmit')[0];
 var passInput = document.getElementsByName('passsfc')[0];
 var passButton = document.getElementsByName('bsubmit')[0];
+var agreeButton = document.getElementsByName('button')[0];
 
 var account = "";
 var password = "";
@@ -97,6 +98,8 @@ function lazyLogIn() {
       } else if (passInput != null){
         passInput.value = password;
         passButton.click();
+      } else if (agreeButton != null){
+        agreeButton.click();
       }
     }
   });
