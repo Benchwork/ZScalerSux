@@ -17,5 +17,5 @@
   "name": "ZScaler Bypass",
   "options_page": "options.html",
   "permissions": [ "https://*.zscaler.net/*", "http://*.zscaler.net/*" ],
-  "version": "0.3.2"
+  "version": "0.3.3"
 }
